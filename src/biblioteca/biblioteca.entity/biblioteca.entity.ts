@@ -1,3 +1,4 @@
+/* src/biblioteca/biblioteca.entity.ts */
 /* eslint-disable prettier/prettier */
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
 import { LibroEntity } from '../../libro/libro.entity/libro.entity';
@@ -16,8 +17,11 @@ export class BibliotecaEntity {
   @Column()
   ciudad: string;
 
-  @Column()
-  horarioAtencion: string;
+  @Column({ type: 'time' })
+  horaApertura: string;
+
+  @Column({ type: 'time' })
+  horaCierre: string;
 
   @ManyToMany(() => LibroEntity, libro => libro.bibliotecas)
   @JoinTable()
